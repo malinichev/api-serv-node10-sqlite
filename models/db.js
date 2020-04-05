@@ -6,11 +6,11 @@ const pathDB = './db/userDb.db'
 
 function checkIsEmailNew(newUser,resolve,reject){
   var db = new sqlite3.Database(pathDB); 
-    db.get(`SELECT email FROM users WHERE email  = ?;`,[newUser.email], (err, row) => {
+    db.get(`SELECT email FROM users WHERE email  = ?;`,[newUser.email], (err, foundEmail) => {
       if (err) {
         return reject(err);
       }
-      if(row===undefined){
+      if(foundEmail===undefined){
         const saltRounds = 10;
         bcrypt.hash(newUser.password, saltRounds, function(err, hash) {
           // Store hash in password DB.
@@ -20,11 +20,11 @@ function checkIsEmailNew(newUser,resolve,reject){
             var db = new sqlite3.Database(pathDB);
             db.run(`INSERT INTO users(_id, email, hash)
                 VALUES("${uuidv4()}", "${newUser.email}", "${hash}");`)
-              .each(`SELECT _id, email, hash FROM users`, (err, row) => {
+              .each(`SELECT _id, email, hash FROM users`, (err, foundStoredinDBEmailin) => {
                   if (err){
                     return reject( err);
                   }
-                    return resolve( row);
+                    return resolve( foundStoredinDBEmailin);
               })
               .close();
         })    
@@ -36,13 +36,13 @@ function checkIsEmailNew(newUser,resolve,reject){
 }
 function ckeckIfWeHaveEmailInDB(emailOfLoginUser, resolve, reject) {
   var db = new sqlite3.Database(pathDB); 
-    db.get(`SELECT _id, hash FROM users WHERE email  = ?;`,[emailOfLoginUser], (err, row) => {
+    db.get(`SELECT _id, hash FROM users WHERE email  = ?;`,[emailOfLoginUser], (err, foundLoginUserEmailInDB) => {
       console.log()
       if (err) {
          return reject(err);
       }
-      if(row!==undefined){
-        return resolve(row)
+      if(foundLoginUserEmailInDB!==undefined){
+        return resolve(foundLoginUserEmailInDB)
       }else{ 
         return reject( {
               status: 400,
