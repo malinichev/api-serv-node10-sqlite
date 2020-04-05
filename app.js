@@ -59,8 +59,9 @@ app.use(function(err, req, res, next){
   })     
 })
 
-const pathDB = './db/userDb.db'
-
+const pathDB = `${process.cwd()}/db/userDb.db`;
+console.log(pathDB)
+// var ee = fs.readFileSync
 fs.access(pathDB, fs.F_OK, (err) => {
     if (err) {
       
