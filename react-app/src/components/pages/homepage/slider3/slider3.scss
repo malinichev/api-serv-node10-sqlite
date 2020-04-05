@@ -1,0 +1,208 @@
+//START catalog_slider///////////////////////////////
+.sliderSmallTow {
+    .container {
+        padding: 0;
+        max-width: calc(100% - 8.59vw - 8.59vw);
+        margin: 0 8.59vw;
+
+        }
+}
+
+
+.sliderSmallTow {
+  padding: 0;
+  margin: 0;
+
+  max-height: 581px;
+  background: #E5E5E5;
+  .slick-slider .slick-list {
+    height: 56.26vh;
+}
+  .container {
+
+      height: auto;
+
+
+      .section_title {
+          display: flex;
+          justify-content: space-between;
+          padding-top: 60px;
+          padding-bottom: 60px;
+          align-items: flex-end;
+
+          h2 {
+              width: 12.5vw;
+              height: 3.2vw;
+              font-family: Ubuntu;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 2.57em;
+              line-height: 3.2vw;
+              display: flex;
+              align-items: center;
+              margin-bottom: 0rem;
+              color: #000000;
+          }
+
+          a {
+              
+              font-family: Ubuntu;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 1em;
+              line-height: 16px;
+              /* identical to box height */
+              display: flex;
+              align-items: center;
+              color: #222D89;
+          }
+      }
+  }
+
+  .sliderSmall2 {
+
+      padding-left: 15vw;
+    
+      .slick-prev:before {
+          content: "<" !important;
+          position: absolute;
+          background-size: contain;
+          top: 0;
+          left: 0;
+      }
+
+      .slick-next:before {
+          content: ">" !important;
+          position: absolute;
+          background-size: contain;
+          top: 0;
+          left: 0;
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+          font-family: 'Nanum Gothic', sans-serif !important;
+          font-size: 1rem !important;
+          color: white;
+          height: inherit;
+          width: inherit;
+          background-repeat: no-repeat;
+      }
+
+      .slick-next.slick-arrow {
+          position: absolute;
+          width: 2.5vw;
+          height: 2.5vw;
+          left: calc(100% - 1.56vw - 2.5vw);
+          top: calc(0% + 3.35vw);
+      }
+
+      .slick-prev.slick-arrow {
+          position: absolute;
+          width: 2.5vw;
+          height: 2.5vw;
+          left: calc(100% - 1.56vw - 2.5vw);
+          top: calc(100% - 3.43vw);
+          z-index: 10000;
+      }
+
+      &:after {
+          content: " ";
+          position: absolute;
+          width: 2.5vw;
+          height: 0px;
+          left: calc(8.59vw + ((2.5vw / 2) / 2));
+          top: (45.31vw /2) / 2;
+          z-index: 10;
+          border: 1px solid #5F5E67;
+
+
+      }
+
+      .slick-list >.slick-track>.slick-slide>div {
+          margin-right: 1.56vw;
+          .block {}
+      }
+
+
+
+      .slick-next.slick-arrow,
+      .slick-prev.slick-arrow {
+          width: 3.75vw;
+          height: 5.83vw;
+          background: rgba(0, 0, 0, 0.8);
+
+          &:before {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+          }
+      }
+
+      .slick-next.slick-arrow {
+          left: 8.59vw;
+          top: calc((45.31vw /2) / 2 + (5.83vw / 2));
+      }
+
+      .slick-prev.slick-arrow {
+          left: 8.59vw;
+          top: calc((45.31vw /2) / 2 - (5.83vw / 2));
+          z-index: 1;
+      }
+
+      .slick-list>.slick-track>.slick-slide {
+          margin-right: 20px;
+      }
+
+      .slick-list>.slick-track>.slick-slide>div {
+
+        .block {
+            height: 38.65vh;
+            background-color: #5F5E67;
+            width: 28.125vw;
+            
+
+            img {
+
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                margin: 0 auto;
+            }
+        }
+      }
+
+
+  }
+}
+
+
+
+@media (min-width:300px) and (max-width:770px) {
+    .sliderSmallTow{
+        display: none;
+    }
+    .sliderSmallTow .sliderSmall2 .slick-list > .slick-track > .slick-slide > div .block {
+        height: 38.65vh;
+        background-color: #5F5E67;
+        width: 90vw;
+        }
+        
+
+  .sliderSmallTow>.sliderSmall2 {
+      padding-left: 2vw;
+      &:after {
+       
+        border: 0px solid #5F5E67;
+
+
+    }
+  }
+
+  .sliderSmallTow>.sliderSmall2>.slick-dots {
+      left: 0;
+      bottom: -35px;
+  }
+}
+
+//END catalog_slider///////////////////////////////

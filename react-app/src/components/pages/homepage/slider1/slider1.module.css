@@ -1,0 +1,33 @@
+.coverDiv{
+    position: relative;
+    width: 100vw;
+}
+.divWhithBtn{
+    position: absolute;
+    top: 14%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btnInHPSlider1{
+    background: #222D89;
+    border: 0px;
+    border-radius: 2px;
+    width: 160px;
+    height: 35px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+@media (min-width:100px) and (max-width:480px) {
+    .coverDiv{
+        position: relative;
+        width: 100%;
+        height: 30vh;
+    }
+}

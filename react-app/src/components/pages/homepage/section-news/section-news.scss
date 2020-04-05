@@ -1,0 +1,108 @@
+.section_news {
+    padding: 0;
+    position: relative;
+    
+    .section_news__bacground {
+        display: flex;
+        width: 100%;
+        height: 17.84rem;
+
+        background-color: aquamarine;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 37.5vw;
+            object-fit: cover;
+        }
+
+        .rightBG {
+            width: 100%;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .text_block {
+                position: absolute;
+                display: flex;
+                top: 0;
+                // left: 37.5vw;
+                width: 53.9vw;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(10px);
+
+                &:after {
+
+                    content: " ";
+                    left: 50%;
+                    position: absolute;
+                    width: 0;
+                    height: 15rem;
+                    top: calc(0% + ((100% - 15rem) / 2));
+
+                    border: 1px solid #3C3A4B;
+                }
+
+                .text_block_news {
+                    padding: 2.34375vw 1.953125vw 2.109375vw 3.125vw;
+
+                    h4 {
+                        margin-bottom: 0;
+                        padding-bottom: 10px;
+                        font-family: Ubuntu;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 22px;
+                        color: #5F5E67;
+                    }
+
+                    p {
+                        // height: 144px;
+                        margin-bottom: 0;
+                        padding-bottom: 15px;
+                        font-family: Ubuntu;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 22px;
+                        color: #FFFFFF;
+                    }
+
+                    a {
+                        font-family: Ubuntu;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 22px;
+                        color: #C4C4C4;
+                    }
+                }
+
+                
+
+
+            }
+
+        }
+    }
+
+
+}
+
+@media (min-width:300px) and (max-width:770px) {
+    .section_news .section_news__bacground .rightBG .text_block {
+        position: absolute;
+        display: flex;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        left: 0;
+    }
+}

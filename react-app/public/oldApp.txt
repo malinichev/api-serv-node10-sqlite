@@ -1,0 +1,45 @@
+
+
+let my : number = 10;
+let my1 : string = "10";
+let my2 : "10" | "20" | null | number = "10";
+my2 = 333
+
+let arr = ['www', 'rrr', 'tttt']
+let arr2: Array <string> = ['www', 'rrr', 'tttt']
+let arr3: string [] = ['www', 'rrr', 'tttt']
+arr3.forEach(n=>{
+  // alert(n.toLowerCase())
+})
+// alert(arr2[0].length)
+type AddresType ={
+  city: String
+  addr: String
+}
+
+type userType ={
+  sayHallow: (mss:string)=> void
+  name: String
+  age?: Number
+  isSamy: Boolean
+  addr: AddresType | null
+}
+
+let user:userType = {
+  sayHallow(mss:string){alert('yo')},
+  name: 'serg',
+  // age: 35,
+  isSamy: true,
+  addr: {
+    city:'dfdf',
+    addr:'dfdf'
+  }
+}
+const ddd = (a:any,b:string)=>{
+ 
+  return a+b
+}
+
+// console.log(ddd(55,"444")) 
+
+// console.log(user.age)

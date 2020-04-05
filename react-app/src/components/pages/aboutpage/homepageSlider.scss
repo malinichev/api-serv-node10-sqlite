@@ -1,0 +1,126 @@
+.homepageSlider {
+    padding: 0;
+    margin: 0;
+    height: 388px;
+    margin-top: 80px;
+    position: relative;
+    object-fit: cover;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: inherit;
+    }
+
+    .leftSide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 57.8vw;
+
+        height: inherit;
+        
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        
+        
+
+        padding: 4.6875vw 8.59375vw 3.125vw;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+
+        p {
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 7.26vw;
+
+
+            color: #979797;
+        }
+
+        h1 {
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 36px;
+            line-height: 41px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5625vw;
+            color: #FFFFFF;
+        }
+
+        .bredcrumb {
+            a {
+                font-family: Ubuntu;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 14px;
+                
+
+                color: #979797;
+            }
+
+            span {
+                color: #979797;
+            }
+        }
+    }
+}
+
+
+
+
+
+@media (max-width:1050px) {
+    .homepageSlider>.leftSide {
+        
+        height: 100%;
+        
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        position: absolute;
+        top: 0;
+
+        padding: 2vw 8.59vw;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+@media (max-width:510px) {
+   
+
+            .homepageSlider {
+                padding: 0;
+                width: 100%;
+
+
+                img {
+                  
+                    min-height: 121px;
+                }
+
+                .leftSide {
+                    padding: 2vw 2vw;
+                    min-height: 121px;
+                }
+            }
+        
+    
+}

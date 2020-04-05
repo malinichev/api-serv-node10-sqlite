@@ -1,0 +1,28 @@
+.aboutRightSlider_wrap {
+    display: flex;
+    
+    height: 21.09vw;
+    object-fit: cover;
+    
+}
+.imgSlide {
+    width: 35.15vw;
+    
+}
+
+
+@media (max-width:771px) {
+   
+        .aboutRightSlider_wrap {
+           
+            height: auto;
+           
+            
+            object-fit: cover;
+            
+        }
+        .imgSlide {
+            width: 100vw;
+            
+        }
+}

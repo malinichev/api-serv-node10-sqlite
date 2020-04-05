@@ -1,0 +1,372 @@
+.grayBG {
+    background: #E5E5E5;
+}
+
+html {
+    background: #FFFFFF;
+}
+
+.wrapperBG {
+    margin-top: 80px;
+    
+    width: 100%;
+    background: #E5E5E5;
+    height: auto;
+
+    .pad {
+        height: 60px;
+    }
+}
+
+footer {
+    position: static !important;
+    // bottom: ;
+    width: 100%;
+}
+
+
+
+.sectionHeader {
+    
+    max-width: 100%;
+    height: auto;
+    background: #FFFFFF;
+    margin: 0 8.59vw 30px 8.59vw;
+    padding: 20px;
+
+    .row {
+        .col-md-6.col-12 {
+            .sectionHeader_left {
+                
+
+                padding: 20px;
+
+                h1 {
+                    font-size: 36px;
+                    line-height: 41px;
+                    font-weight: 500;
+                    margin-bottom: 0.507vw;
+                }
+
+                .bredcrumb {
+                    color: #979797;
+                    
+
+                    a {
+                        font-family: Ubuntu;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 14px;
+                        color: inherit;
+                        margin-right: .78vw;
+                        margin-left: .78vw;
+                    }
+
+                    a:nth-last-child(1) {
+                        margin-left: .78vw;
+                        margin-right: 0;
+                    }
+
+                    a:nth-child(1) {
+                        margin-left: 0;
+                        margin-right: .78vw;
+                        
+                    }
+
+
+
+                }
+
+                h3 {
+                    font-family: Ubuntu;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    margin-top: 2.34vw;
+                    margin-bottom: 1.56vw;
+                }
+
+                p {
+                    font-family: Ubuntu;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 24px;
+                }
+
+                .sectionHeader_left_bottom_a {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 2.34vw;
+
+                    a {
+                        font-family: Ubuntu;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 24px;
+                        /* or 171% */
+
+
+                        color: #222D89;
+
+                        span {
+                            position: relative;
+                            max-width: 20px;
+                            max-height: 18px;
+                            top: -4px;
+                        }
+                    }
+                }
+
+                .sectionHeader_left_bottom_button {
+                    display: flex;
+                    justify-content: space-between;
+
+                    a {
+                        margin-right: 10px;
+                    }
+
+                    a:nth-last-child(1) {
+                        margin-right: 0;
+                    }
+
+
+
+
+                }
+            }
+
+            .sectionHeader_right {
+                .slider-for2{
+                    position: relative;
+                }
+               
+
+
+
+            }
+        }
+    }
+
+
+
+
+
+}
+
+.card_inf_section {
+    max-width: 100%;
+
+    height: auto;
+    background: #FFFFFF;
+    margin: 0 8.59vw;
+    padding: 40px;
+
+    h3 {
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        /* identical to box height */
+        display: flex;
+        align-items: center;
+        margin: 0;
+        color: #000000;
+        padding-bottom: 20px;
+    }
+
+    h3:nth-last-child(2) {
+        
+        padding-top: 44px;
+        padding-bottom: 20px;
+    }
+
+    p {
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        /* or 171% */
+        display: flex;
+        align-items: center;
+        margin: 0;
+        color: #000000;
+    }
+
+}
+
+.analog_tovar {
+    max-width: 100%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    height: auto;
+    
+    margin: 0 8.59vw;
+
+    
+    .catalogSection {
+        padding: 0;
+        margin: 0;
+
+        h1 {
+            padding-top: 0;
+            margin: 0;
+        }
+
+        .catalogAll {
+            padding: 40px 0 60px;
+        }
+    }
+}
+
+
+
+@media (max-width: 676px) {
+    .wrapperBG {
+        .pad {
+            height: 10px;
+        }
+    }
+
+
+    .sectionHeader {
+
+        max-width: 100%;
+        height: auto;
+        background: #FFFFFF;
+        margin: calc(10px) 2vw 30px;
+        padding: 10px;
+   
+
+        .sectionHeader_right {
+   
+
+            .slider-for2.slick-initialized.slick-slider {
+   
+
+                .slick-list {
+   
+
+
+
+                    .slick-track {
+                        .slick-slide {
+   
+
+                            div {
+
+   
+                                .block {
+                                    img {
+                                        height: 75vw !important;
+                                        width: auto;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .card_inf_section {
+            max-width: 100%;
+
+            height: auto;
+            background: #FFFFFF;
+            margin: 0 2vw;
+            padding: 20px;
+        }
+
+        .analog_tovar {
+            max-width: 100%;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            height: auto;
+
+            margin: 0 2vw;
+
+        }
+    }
+}
+
+@media (min-width: 576px) {
+
+
+    .modal-dialog {
+        max-width: 360px;
+        margin: 1.75rem auto;
+
+        .modal-content {
+            border-radius: 0;
+            margin: 10.93vw auto;
+
+            .modal-header {
+                padding: 17px 30px;
+
+                .modal-title {
+                    font-family: Ubuntu;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+
+            .modal-body {
+                padding: 20px 30px 0;
+
+                form {
+                    .form-group {
+                        input {
+                            height: 44px;
+                            background: #F6F6F6;
+                            font-size: 14px;
+                            line-height: 14px;
+                            /* identical to box height, or 100% */
+                            border: 1px solid #EDEDED;
+                            color: #202124;
+
+                            mix-blend-mode: normal;
+                            
+                            border-radius: 2px;
+                        }
+
+                        input:focus {
+                            background: #FFFFFF;
+                            font-family: Ubuntu;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 14px;
+
+                            border: 1px solid #2F75EC !important;
+                            box-sizing: border-box;
+                            border-radius: 2px;
+                            
+                        }
+
+                        .col-form-label {
+
+                            line-height: 14px;
+                        }
+                    }
+                }
+            }
+
+            .modal-footer {
+                justify-content: center;
+                border: 0px;
+                padding: 14px 30px 30px 30px;
+            }
+        }
+    }
+
+}

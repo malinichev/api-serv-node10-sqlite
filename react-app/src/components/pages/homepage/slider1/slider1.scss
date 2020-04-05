@@ -1,0 +1,298 @@
+.Gallery_back{
+    display: flex;
+    position: relative;
+    top:0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    padding: 38.2vh 0 0 0;
+    .Gallery_back__title{
+
+        position: absolute;
+       
+        z-index: 1;
+        h1{
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 36px;
+            line-height: 41px;
+            color: #FFFFFF;
+        }
+        p{
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            color: #FFFFFF;
+        }
+       
+    }
+    .homeSliderFirst{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        .homeSliderFirst__block1{
+            width: 100vw;
+            .homeSliderFirst__imageLarge{
+                height: 100%;
+                min-height: 100vh;
+                
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+    
+        
+    .cover_homeSliderFirst_forNav{
+        
+        overflow: hidden;
+        position: absolute;
+        width: 57.8vw;
+        height: 22.38vh; 
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 1;
+        .homeSliderFirst_forNav{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+           
+                .block{
+                    width: 57.8vw;
+                    padding: 0 90px 0 8.59vw;
+                    display: flex;
+                    height: 100%;
+                    overflow: hidden;
+                    .covImg{
+                        width: 15.625vw;
+                        height: 22.38vh;
+                        overflow: hidden;
+                        .small-im{
+                            object-fit: cover;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    .block_text{
+                        width: 100%;
+                        height: 22.38vh;
+
+                        display: flex;
+                
+                        
+                        align-items: center;
+                        p{
+                            text-align: center;
+                            width: 55px;
+                            height: 55px;
+                            margin-bottom: 0rem;
+                            margin: 0 30px 0 35px;  
+                            font-family: Ubuntu;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 48px;
+                            line-height: 55px;
+                            
+                            color: transparent;
+                            
+                            -webkit-text-stroke: 1px white;
+                        }
+                        h2{
+                            display: flex;
+                            align-items: center;
+                            width: 220px;
+                            height: 35px;
+                            color: #C4C4C4;
+                            margin-bottom: 0rem;
+                            font-family: Ubuntu;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            line-height: 16px;
+                        }
+                    }
+                }
+                .homeSliderFirst_forNav_dots{
+                    position: absolute;
+                    bottom: 2.98vh;
+                    
+                   
+                    text-align: center;
+                    
+                    
+                    list-style: none;
+                    
+                    
+                    
+                    padding: 0;
+                    margin: 0 0 0 calc(34.9vw);
+                   
+
+                    li{
+                        position: relative;
+                        display: inline-block;
+                        height: 8px;
+                        width: 8px;
+                        margin: 0 5px;
+                        padding: 0;
+                        cursor: pointer;
+                        button{
+                            border: 0;
+                            background: transparent;
+                            display: block;
+                            height: 8px;
+                            width: 8px;
+                            outline: none;
+                            line-height: 0px;
+                            font-size: 0px;
+                            color: transparent;
+                            padding: 0;
+                            cursor: pointer;
+
+
+
+                        }
+                        button:before {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            content: " ";
+                            width: 8px;
+                            height: 8px;
+                            font-family: "slick";
+                            font-size: 6px;
+                            line-height: 20px;
+                            text-align: center;
+                           
+                            opacity: 0.25;
+
+                            border-radius: 100px;
+                            background: #FFFFFF;
+                            
+                            opacity: 0.2;
+                            -webkit-font-smoothing: antialiased;
+                        }
+                        
+                    }
+                    .slick-active>button:before {
+                        
+                        
+                        border-radius: 100px;
+                        background: #FFFFFF;                    
+                        opacity: 1;
+                        
+                    }
+                }
+                .NextArrow{
+                    
+                    position: absolute;
+                    top: 0;
+                    right: 0.78vw;
+                    width: 3.9vw;
+                    height: 50%;
+                    background: transparent;
+                    justify-content: center;
+                    align-items: center;
+                    border-bottom: 1px solid #3C3A4B;
+                }
+                .NextArrow:before {
+                    
+                    content: " ";
+                    background-image: url('../../../common/images/Arrow.svg');
+                    width: 8.4px;
+                    height: 14px;
+                    color: #FFFFFF;
+                    
+                }
+               
+                .PrevArrow{
+                    
+                    position: absolute;
+                    bottom: 0;
+                    right: 0.78vw;
+                    width: 3.9vw;
+                    height: 50%;
+                    background: transparent;    
+                    justify-content: center;
+                    align-items: center;
+                }
+                .PrevArrow:before {
+                    
+                    content: " ";
+                    background-image: url('../../../common/images/Arrow-2.svg');
+                    width: 8.4px;
+                    height: 14px;
+                    color: #FFFFFF;
+                    
+                }
+            
+            
+
+        }
+    }
+    
+    
+}
+@media (min-width:100px) and (max-width:480px) {
+    .Gallery_back{
+        height: 30vh;
+        width: 100%;
+        padding: 0;
+        .Gallery_back__title {
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            h1{
+                font-size: 7.41vw;
+            }
+            p{
+                font-size: 4.09vw;
+            }
+        }
+        .homeSliderFirst{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            
+            .homeSliderFirst__block1{
+                width: 100%;
+                height: 30vh;
+                .homeSliderFirst__imageLarge{
+                    min-width: 100vw;
+                    height: 100%;
+                    min-height: 30vh;
+                    width: auto;
+                    
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }   
+    .Gallery_back .cover_homeSliderFirst_forNav{
+        display: none;
+    }
+}
+@media (min-width:770px) and (max-width:1000px) {   
+   
+    .Gallery_back .cover_homeSliderFirst_forNav .homeSliderFirst_forNav .block .covImg {
+        width: 100%;
+        height: 22.38vh;
+        overflow: hidden;
+    }
+    .Gallery_back .cover_homeSliderFirst_forNav .homeSliderFirst_forNav .block {
+        width: 57.8vw;
+        padding: 0 50px 0 0;
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+    }
+}
