@@ -4,22 +4,22 @@ const bcrypt = require('bcrypt');
 const sqlite3 = require('sqlite3').verbose();
 const pathDB = './db/userDb.db'
 
-function checkIsEmailNew(newUser,resolve,reject){
+function checkIsEmailNew(registeredUser,resolve,reject){
   var db = new sqlite3.Database(pathDB); 
-    db.get(`SELECT email FROM users WHERE email  = ?;`,[newUser.email], (err, foundEmail) => {
+    db.get(`SELECT email FROM users WHERE email  = ?;`,[registeredUser.email], (err, foundEmail) => {
       if (err) {
         return reject(err);
       }
       if(foundEmail===undefined){
         const saltRounds = 10;
-        bcrypt.hash(newUser.password, saltRounds, function(err, hash) {
+        bcrypt.hash(registeredUser.password, saltRounds, function(err, hash) {
           // Store hash in password DB.
             if (err){
               return reject( err);
             }
             var db = new sqlite3.Database(pathDB);
             db.run(`INSERT INTO users(_id, email, hash)
-                VALUES("${uuidv4()}", "${newUser.email}", "${hash}");`)
+                VALUES("${uuidv4()}", "${registeredUser.email}", "${hash}");`)
               .each(`SELECT _id, email, hash FROM users`, (err, foundStoredinDBEmailin) => {
                   if (err){
                     return reject( err);
@@ -80,12 +80,12 @@ module.exports.registerNewUser = function(emailOfNewUser, passwordOfNewUser) {
   
   return new Promise((resolve, reject)=>{
     
-    var newUser = {
+    var registerUser = {
                 email: emailOfNewUser,
                 password: passwordOfNewUser
     }
    
-    checkIsEmailNew(newUser,resolve,reject)
+    checkIsEmailNew(registerUser,resolve,reject)
          
   });
 }
