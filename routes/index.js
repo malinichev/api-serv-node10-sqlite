@@ -43,8 +43,9 @@ router.delete('/user/:idDelUser',auth, (req,res)=>{  //DELLL
 router.post('/register', (req, res, next)=>{
   db
     .registerNewUser(req.body.email, req.body.pass)
-    .then((results)=>{
-      res.json({results: results});
+    .then((el)=>{
+      
+      res.json({results: el});
     })
     .catch((err)=>{
       next(err);
