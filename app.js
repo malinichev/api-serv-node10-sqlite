@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use(express.static('./react-app/myapp/build'));
+// app.use(express.static('./react-app/myapp/build'));
 
 
 const params = {

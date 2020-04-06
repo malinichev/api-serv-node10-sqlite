@@ -17,9 +17,9 @@ const isValidPassword = function(password, user) {
   return bcrypt.compareSync(password, user.hash);
 }
 
-router.get('/', (req, res, next)=>{
-  res.render('../react-app/myapp/build/index.html');
-})
+// router.get('/', (req, res, next)=>{
+//   res.render('../react-app/myapp/build/index.html');
+// })
 router.get('/api', (req, res, next)=>{
   
   db
@@ -45,7 +45,7 @@ router.delete('/api/user/:idDelUser',auth, (req,res)=>{  //DELLL
     })  
 });
 router.post('/api/register', (req, res, next)=>{
-  console.log(req.body.email)
+  // console.log(req.body.email)
   db
     .registerNewUser(req.body.email, req.body.pass)
     .then((el)=>{
