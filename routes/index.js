@@ -18,7 +18,7 @@ const isValidPassword = function(password, user) {
 }
 
 router.get('/', (req, res, next)=>{
-  res.render('index.html');
+  res.render('../react-app/build/index.html');
 })
 router.get('/api', (req, res, next)=>{
   
