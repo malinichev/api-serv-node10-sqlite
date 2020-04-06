@@ -12,7 +12,7 @@ WORKDIR /api-serv/react-app/myapp
 COPY . .
 
 # Build the project and copy the files
-RUN npm run build
+CMD [ "npm", "run-script", "build" ]
 
 WORKDIR /api-serv
 
