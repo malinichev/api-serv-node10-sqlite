@@ -17,6 +17,9 @@ const isValidPassword = function(password, user) {
   return bcrypt.compareSync(password, user.hash);
 }
 
+router.get('/', (req, res, next)=>{
+  res.render('index.html');
+})
 router.get('/api', (req, res, next)=>{
   
   db

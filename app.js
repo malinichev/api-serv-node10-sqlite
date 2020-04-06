@@ -25,6 +25,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+app.use(express.static('./react-app/build'));
+
+
 const params = {
   secretOrKey: config.secret,
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
