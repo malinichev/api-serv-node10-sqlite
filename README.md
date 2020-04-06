@@ -3,6 +3,14 @@
 **в отладочном режиме, надо выполнить** </br>
 git clone https://github.com/malinichev/api-serv-node10-sqlite.git </br>
 
+nano ./api-serv-node10-sqlite/react-app/src/api/index.js </br>
+
+Отредактировать там index.js </br>
+let axiosInstance = axios.create({ </br>
+    baseURL: './api',    <---------------путь поменять на http://<путь к вашему сайту>:3001/api </br>
+
+
+
 cd ./api-serv-node10-sqlite/react-app </br>
 
 npm i </br>
