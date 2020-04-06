@@ -2,7 +2,9 @@ FROM node:10
 
 WORKDIR /api-serv
 
-COPY react-app/package*.json ./react-app/ && react-app/public/ ./react-app/public/ && react-app/scr/ ./react-app/scr/
+COPY react-app/package*.json ./react-app/ 
+COPY react-app/public/ ./react-app/public/ 
+COPY react-app/scr/ ./react-app/scr/
 
 WORKDIR /api-serv/react-app
 
