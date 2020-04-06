@@ -1,10 +1,18 @@
 FROM node:10
 
 WORKDIR /api-serv/react-app
+# copy the package.json to install dependencies
+COPY package.json package-lock.json ./
 
-COPY package*.json ./
- 
-RUN npm install && npm run-script build && rm -r ./node_modules
+# Install the dependencies and make the folder
+RUN npm install && mkdir /myapp && mv ./node_modules ./myapp
+
+WORKDIR /api-serv/react-app/myapp
+
+COPY . .
+
+# Build the project and copy the files
+RUN npm run build
 
 WORKDIR /api-serv
 
