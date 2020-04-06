@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 const jwt = require('jwt-simple');
 
@@ -17,9 +17,9 @@ const isValidPassword = function(password, user) {
   return bcrypt.compareSync(password, user.hash);
 }
 
-router.get('/', (req, res, next)=>{
-  res.render('../react-app/build/index.html');
-})
+// router.get('/', (req, res, next)=>{
+//   res.render('../react-app/build/index.html');
+// })
 router.get('/api', (req, res, next)=>{
   
   db

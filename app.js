@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 const app = express();
 const fs = require('fs');
-var path = require('path'); 
 const sqlite3 = require('sqlite3').verbose();
 
 const cors = require('cors');
@@ -18,7 +17,7 @@ const Strategy = passportJWT.Strategy;
 const db = require('./models/db');
 const config = require('./config/config');
 
-const PORT = process.env.PORT || 5555
+const PORT = process.env.PORT || 3001
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -71,10 +70,10 @@ app.use(function(err, req, res, next){
 
 const pathDB = './db/userDb.db'
 
-
-
-if (path.existsSync(pathDB)) { 
-  var db = new sqlite3.Database(pathDB);
+fs.access(pathDB, fs.F_OK, (err) => {
+    if (err) {
+      
+      var db = new sqlite3.Database(pathDB);
       db
         .run('CREATE TABLE users(_id TEXT NOT NULL, email TEXT NOT NULL, hash TEXT NOT NULL)')
         .close((err) => {
@@ -82,14 +81,8 @@ if (path.existsSync(pathDB)) {
             return console.error(err);
           }
         });
-} 
-
-// fs.access(pathDB, fs.F_OK, (err) => {
-//     if (err) {
-      
-      
-//     }
-// });
+    }
+});
 
 const server = app.listen(PORT, function () {  
   console.log('Server start in: ' + server.address().port);
