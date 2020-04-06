@@ -17,7 +17,7 @@ const Strategy = passportJWT.Strategy;
 const db = require('./models/db');
 const config = require('./config/config');
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 5556
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
