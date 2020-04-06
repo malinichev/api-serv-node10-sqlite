@@ -6,7 +6,7 @@ COPY react-app/package*.json ./react-app/
 
 WORKDIR /api-serv/react-app
 
-RUN npm install && rm -r ./node_modules
+RUN npm install && npm run-script build && rm -r ./node_modules
 
 WORKDIR /api-serv
 
