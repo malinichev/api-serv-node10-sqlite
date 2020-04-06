@@ -1,5 +1,9 @@
 # api-serv-node10-sqlite
 
+**Ссылка на уже развернутый APP**
+http://90.188.237.123:5556
+
+
 **в отладочном режиме, надо выполнить** </br>
 git clone https://github.com/malinichev/api-serv-node10-sqlite.git </br>
 
