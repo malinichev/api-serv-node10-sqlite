@@ -4,7 +4,10 @@ const router = require('./routes');
 const app = express();
 const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
+
+const cors = require('cors');
 const methodOverride = require('method-override');
+
 
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
@@ -14,10 +17,13 @@ const Strategy = passportJWT.Strategy;
 const db = require('./models/db');
 const config = require('./config/config');
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
+
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
+
 
 const params = {
   secretOrKey: config.secret,
@@ -76,5 +82,5 @@ fs.access(pathDB, fs.F_OK, (err) => {
 });
 
 const server = app.listen(PORT, function () {  
-  console.log('Сервер пашет на порту: ' + server.address().port);
+  console.log('Server start in: ' + server.address().port);
 })

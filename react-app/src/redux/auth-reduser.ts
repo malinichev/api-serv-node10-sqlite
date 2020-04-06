@@ -1,18 +1,25 @@
-import {isDataLoad} from './app-reduser';
-import {LogInUserApi, RegisterNewUserApi} from '../api'
+import {isDataLoad, loadAllUser,delOneUser,isError, initializeAppIfWeHaveADataOfUser} from './app-reduser';
+import {authApi} from '../api'
 
 
 
 const SET_LOG_IN = 'auth/SET_LOG_IN';
-const IS_LOG_IN = 'auth/IS_LOG_IN';
+
 const SET_LOG_OUT = 'auth/SET_LOG_OUT';
-const SET_ME = 'auth/SET_ME';
-const IS_ERROR_LOGIN = 'auth/IS_ERROR_LOGIN';
+
+const IS_ERROR_IN_AUTH = 'auth/IS_ERROR_IN_AUTH';
+
+type UserType = {
+    _id:    String | null
+    email:  String | null
+    token:  String | null
+}
 
 const initState = {
-        isLogIn:false,
-        user:{},
-        isErr: false,
+    isLogIn:    false,
+
+    user: {} as UserType | {}
+        
 };
 
 export type InitStateType = typeof initState
@@ -24,40 +31,24 @@ const authReduser = (state = initState, action: any): InitStateType => {
             return {
                 ...state,
                 ...state.user,
-                isLogIn: true,
-                user: action.user.user
-            };
-        case IS_LOG_IN:
-            return {
-                ...state,
-                ...state.user,
-                isLogIn: true,
-                user: action.user
-                
+                user: action.user,
+                isLogIn: true
             };
         case SET_LOG_OUT:
             return {
                 ...state,
                 ...state.user,
                 isLogIn: false,
-                user:{}
+                user:{} 
             };
-        case SET_ME:
-            return {
-                ...state,
-                isLogIn: true,
-            };
-        case IS_ERROR_LOGIN:
+        
+        case IS_ERROR_IN_AUTH:
             return {
                 ...state,
                 ...state.user,
-                isErr: true,
                 isLogIn: false,
                 user:{},
-
             };
-        
-        
         default:
             return state;
     }
@@ -68,81 +59,99 @@ const authReduser = (state = initState, action: any): InitStateType => {
 
 type setLoginActionType = {
     type: typeof SET_LOG_IN
-    user: any
-}
-type setIsLogInActionType = {
-    type: typeof IS_LOG_IN
-    user: any
-}
-type setLogOutActionType = {
-    type: typeof SET_LOG_OUT
-}
-type setMeActionType = {
-    type: typeof SET_ME
+    user: UserType
 }
 
-export const setLogin = (user: any): setLoginActionType => ({
+export const setLogin = (user: UserType): setLoginActionType => ({
     type: SET_LOG_IN,
     user
 })
-export const setIsLogIn = (user: any): setIsLogInActionType => ({
-    type: IS_LOG_IN,
-    user
-})
+
+
+type setLogOutActionType = {
+    type: typeof SET_LOG_OUT
+}
 export const setLogOut = (): setLogOutActionType => ({
     type: SET_LOG_OUT
 })
-export const setMe = (): setMeActionType => ({
-    type: SET_ME
-})
 
-
-export const loginUser =  (user: any) => {
-
-    return async (dispatch: any) => {
-      
-       
-        dispatch(isDataLoad(false));
-        try{
-        
-        let dataUser = await LogInUserApi(user);
-        localStorage.setItem('token', dataUser.user.token);
-        localStorage.setItem('email', dataUser.user.email);
-        
-        dispatch(setLogin(dataUser));
-        dispatch(isDataLoad(true));
-        
-        }catch(err){
-            console.log('errrr login Auth')
-        }
-    }
-}
-export const registerNewUser =  (newUser: any) => {
-
-    return async (dispatch: any) => {
-        let myUser = {user:newUser}
-       
-        dispatch(isDataLoad(false));
-        try{
-        
-        let dataUser = await RegisterNewUserApi(myUser);
-        console.log(dataUser);
-        dispatch(setLogin(dataUser));
-        dispatch(isDataLoad(true));
-        
-        }catch(err){
-            console.log('errrr register Auth')
-        }
-    }
-}
-export const logOutUser=  () => {
+export const logOutUser =  () => {
 
     return  (dispatch: any) => {
         localStorage.clear()
-        dispatch(setLogOut()); 
+        dispatch(setLogOut());
 
     }
 }
+export const delRootUser =  (idRootUser:string) => {
+
+    return  (dispatch: any) => {
+        dispatch(delOneUser(idRootUser));
+        localStorage.clear();
+        dispatch(setLogOut());
+        dispatch(initializeAppIfWeHaveADataOfUser());
+        
+
+    }
+}
+
+
+
+
+export const loginUser =  (user: UserType) => {
+    return async (dispatch: any) => { 
+        dispatch(isDataLoad(false));
+        try{    
+            
+            let dataOfLogInUser = await authApi.logInUser(user);
+            localStorage.setItem('_id', dataOfLogInUser._id);
+            localStorage.setItem('email', dataOfLogInUser.email);
+            localStorage.setItem('token', dataOfLogInUser.token);
+
+            dispatch(setLogin(dataOfLogInUser));
+            dispatch(isDataLoad(true));
+            
+        }catch(err){
+            console.log('errrr login Auth');
+            dispatch(logOutUser());
+            
+            dispatch(isDataLoad(true));
+            dispatch(isError('errrr login Auth'));
+            
+            
+           
+            
+            
+            
+        }
+    }
+}
+
+export const registerNewUser =  (newUser: UserType) => {
+
+    return async (dispatch: any) => {
+            dispatch(isDataLoad(false));
+        try{
+            
+            let dataOfRegisterUser = await authApi.registerNewUser(newUser);
+            localStorage.setItem('_id', dataOfRegisterUser._id);
+            localStorage.setItem('email', dataOfRegisterUser.email);
+            localStorage.setItem('token', dataOfRegisterUser.token);
+            dispatch(setLogin(dataOfRegisterUser));
+
+            dispatch(loadAllUser());
+            dispatch(isDataLoad(true));
+        }catch(err){
+            console.log('errrr register Auth')
+            dispatch(isError('errrr register Auth'));
+            dispatch(logOutUser());
+            dispatch(isDataLoad(true));
+        }
+    }
+}
+
+
+
 
 
 export default authReduser

@@ -1,16 +1,46 @@
 import React from 'react';
-import Slider1 from './slider1'
-import Slider2 from './slider2'
-import Slider3 from './slider3'
-import SectionNews from './section-news'
-const HomePage= ({hpSliderItems,isSlider1Load,isLogIn, delOneHPSlider1, items, isItemsLoad}) => {
+import { Table, Button } from "react-bootstrap";
+import s from './home-page.module.css'
+
+
+const HomePage= (props) => {
+    
     
     return (
         <>
-            <Slider1 isLogIn={isLogIn} delOneHPSlider1={delOneHPSlider1} isSlider1Load={isSlider1Load} data={hpSliderItems} />
-            <Slider2 items={items} isItemsLoad={isItemsLoad}/>
-            <SectionNews  />
-            <Slider3 items={items} isItemsLoad={isItemsLoad}  />
+            <div>
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            !props.users
+                            ? 
+                                null
+                            :
+                            props.users
+                            .filter(el=>el._id!==localStorage.getItem('_id'))
+                            .map( (el, i) => {
+                                return(
+                                <tr key={el._id + i}>
+                                    <td>{i}</td>
+                                    <td>{el._id}</td>
+                                    <td className={s.emailDelBtn}>
+                                        {el.email}
+                                        <Button onClick={()=>props.delOneUser(el._id)} variant="danger">DEL USER</Button>
+                                    </td>
+                                </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </Table>
+            </div> 
         </>
     );
 }

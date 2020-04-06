@@ -30,38 +30,53 @@ router.get('/api', (req, res, next)=>{
 });
 
 router.delete('/api/user/:idDelUser',auth, (req,res)=>{  //DELLL
-  
+  // console.log(req.params.idDelUser)
   db
     .delUserById(req.params.idDelUser)
     .then((results)=>{
-      res.json({DelIsOk: results});
+      console.log(results)
+      res.status(200).json(results);
     })
     .catch((err)=>{
       next(err);
     })  
 });
 router.post('/api/register', (req, res, next)=>{
+  console.log(req.body.email)
   db
     .registerNewUser(req.body.email, req.body.pass)
     .then((el)=>{
-
-      res.json({results: el});
+      var payload ={
+        id: el._id
+      }
+      var token = jwt.encode(payload, config.secret);
+      res.json({
+        _id:    el._id,
+        email:  el.email,
+        token:  token
+      });
+      // res.json({el});
     })
     .catch((err)=>{
       next(err);
     }) 
 });
 router.post('/api/login', (req, res, next)=>{
-  // console.log(req.body.email,'emmmmm')
+  
   db
-    .getUser(req.body.email)
+    .getUser(req.body.dataOfLoginUser.email)
     .then((results)=>{
-      if (isValidPassword(req.body.pass, results )) {
+      if (isValidPassword(req.body.dataOfLoginUser.pass, results )) {
         var payload ={
           id: results._id
         }
         var token = jwt.encode(payload, config.secret);
-        res.json({token: token});
+        
+        res.json({
+          _id:    results._id,
+          email:  results.email,
+          token:  token
+        });
       } else {
         const err = new Error('Не верный логин или пароль!');
         err.status = 400;

@@ -51,18 +51,22 @@ module.exports.registerNewUser = function(emailOfNewUser, passwordOfNewUser) {
               return reject( err);
             }
             var db = new sqlite3.Database(pathDB);
+            var newUserId = uuidv4();
             db.run(`INSERT INTO users(_id, email, hash)
-                VALUES("${uuidv4()}", "${registerUser.email}", "${hash}");`, function(err) {
+                VALUES("${newUserId}", "${registerUser.email}", "${hash}");`, function(err) {
                   if (err) {
                     return reject(err.message);
                   }                  
-                    return resolve(`A user ${registerUser.email} has been inserted in DB`);
+                    return resolve( {
+                        _id:  newUserId,
+                      email:  registerUser.email                      
+                    });
                 })
              
               .close();
         })    
       }else{ 
-        return resolve( {err:'Пользователь с таким именем есть!'});
+        return reject( 'Пользователь с таким именем есть!');
       }
     })
     .close()
@@ -71,11 +75,11 @@ module.exports.registerNewUser = function(emailOfNewUser, passwordOfNewUser) {
 }
 
 module.exports.getUser = function(emailOfLoginUser) {
-  
+  // console.log(emailOfLoginUser)
   return new Promise((resolve, reject)=>{
     var db = new sqlite3.Database(pathDB); 
-    db.get(`SELECT _id, hash FROM users WHERE email  = ?;`,[emailOfLoginUser], (err, foundLoginUserEmailInDB) => {
-      console.log()
+    db.get(`SELECT _id, email, hash FROM users WHERE email  = ?;`,[emailOfLoginUser], (err, foundLoginUserEmailInDB) => {
+      
       if (err) {
          return reject(err);
       }
@@ -116,11 +120,11 @@ module.exports.delUserById = function(idOfDeletedUser) {
     
     db.serialize(() => {
         db
-            .run(`DELETE FROM users WHERE _id  = ?`,idOfDeletedUser, (err,id) => {
+            .run(`DELETE FROM users WHERE _id  = ?`,idOfDeletedUser, (err) => {
                 if (err){
-                  throw err;
+                  throw reject(err);
                 }
-                resolve(`Row(s) deleted ${idOfDeletedUser}`);
+                return resolve({_id:idOfDeletedUser});
                 
   
             })

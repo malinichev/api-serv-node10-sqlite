@@ -4,8 +4,6 @@ import { reducer as formReducer } from 'redux-form'
 
 
 
-import homepageReduser from './homepage-reduser';
-import catalogReduser from './catalog-reduser';
 
 import appReduser from './app-reduser.ts';
 import authReduser from './auth-reduser';
@@ -15,11 +13,8 @@ import thunkMiddleware from 'redux-thunk';
 
 
 let reducers = combineReducers({
-    app: appReduser,
-    catalogAdnItems: catalogReduser,
+    app: appReduser,    
     auth: authReduser,
-    homepage: homepageReduser,
-    
     form: formReducer
 });
 

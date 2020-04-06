@@ -2,8 +2,8 @@
 import React,{useState} from 'react'
 import {Modal, Button} from 'react-bootstrap'
 
-import { required, maxLength_3_25, maxLength_2_100} from '../modal-login-in-start/validate-form'
-import s from './modal-login-user.module.css'
+import { required, maxLength_3_25, maxLength_2_100} from './validate-form'
+import s from './modal-login-in-start.module.css'
 import { Field, reduxForm } from 'redux-form'
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
@@ -17,7 +17,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   );
 }
 
-const FormRegisteron = (props) =>{ 
+const FormRegisteronStart = (props) =>{ 
   
   
   return (
@@ -79,14 +79,14 @@ const validate = values => {
 
 
 };
-const FormReduxRegisteron = reduxForm({
+const FormReduxRegisteronStart = reduxForm({
   // a unique name for the form
   validate,
-  form: 'registerFormon'
+  form: 'registerFormonStart'
   
-})(FormRegisteron)
+})(FormRegisteronStart)
 
-const FormLoginin = (props) =>{ 
+const FormLogininStart = (props) =>{ 
   return (
     <form onSubmit={props.handleSubmit}>   
     
@@ -117,23 +117,21 @@ const FormLoginin = (props) =>{
   );
 }
 
-const FormreduxLoginin = reduxForm({
+const FormreduxLogininStart = reduxForm({
   // a unique name for the form
-  form: 'loginFormin'
-})(FormLoginin)
+  form: 'loginForminStart'
+})(FormLogininStart)
 
 
 
 
-const ModalLoginUser = ({loginUserThunk, registerNewUserThunk}) => {
+const ModalLoginUserInStart = ({loginUserThunk, registerNewUserThunk}) => {
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const [logForm, setLogForm] = useState(true)  
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     
     const submitLogin = (userVal) =>{
-      
       loginUserThunk(userVal);
       handleClose();
   
@@ -146,9 +144,6 @@ const ModalLoginUser = ({loginUserThunk, registerNewUserThunk}) => {
       }
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
-              Login or Register
-        </Button>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title>{`WELCOME! `}</Modal.Title>
@@ -166,9 +161,9 @@ const ModalLoginUser = ({loginUserThunk, registerNewUserThunk}) => {
             {
             logForm
             ?
-            <FormreduxLoginin required={required} maxLength_3_25={maxLength_3_25}  maxLength_2_100={maxLength_2_100} onSubmit={submitLogin}  />
+            <FormreduxLogininStart required={required} maxLength_3_25={maxLength_3_25}  maxLength_2_100={maxLength_2_100} onSubmit={submitLogin}  />
             :
-            <FormReduxRegisteron onSubmit={submitRegister} required={required}  maxLength_3_25={maxLength_3_25}  maxLength_2_100={maxLength_2_100} />
+            <FormReduxRegisteronStart onSubmit={submitRegister} required={required}  maxLength_3_25={maxLength_3_25}  maxLength_2_100={maxLength_2_100} />
             }
               
           </Modal.Body>
@@ -182,4 +177,4 @@ const ModalLoginUser = ({loginUserThunk, registerNewUserThunk}) => {
   }
 
 
-export default ModalLoginUser
+export default ModalLoginUserInStart

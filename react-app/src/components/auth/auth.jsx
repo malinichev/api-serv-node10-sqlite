@@ -1,28 +1,36 @@
 import React from 'react';
-import ModalLoginUser from '../common/modal-login'
-import ModalRegUser from '../common/modal-register'
+import { Button, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import {loginUser, logOutUser, registerNewUser} from '../../redux/auth-reduser';
-import {Navbar, Button} from 'react-bootstrap';
-const Auth = ({loginUser, isLogIn, user, logOutUser, registerNewUser}) =>{
+import {  logOutUser, delRootUser} from '../../redux/auth-reduser';
+import ModalLoginUser from '../common/modal-login'
+
+import { isLogin, meInfo } from '../../redux/selectors';
+
+
+
+const Auth = ({ isLogIn, user,  logOutUser, delRootUser, loginUserThunk, registerNewUserThunk}) =>{
     
     if(isLogIn){
 
        return( 
         <>
             <Navbar.Text className={'pr-2'}>
-               Hi! {user.email}
+            Привет, {user.email} !
             </Navbar.Text>
             <Button 
                 onClick={()=>logOutUser()}
             >LogOut</Button>
+            <Button 
+                variant="warning"
+                onClick={()=>delRootUser(localStorage.getItem('_id'))}
+            >Del User&Exit</Button>
         </>
         );
     }else{
         return(
             <>
-                <ModalLoginUser loginUserThunk={loginUser}/>
-                <ModalRegUser registerNewUserThunk={registerNewUser} />
+                <ModalLoginUser loginUserThunk={loginUserThunk} registerNewUserThunk={registerNewUserThunk}/>
+                
             </>
         );
     }
@@ -31,11 +39,11 @@ const Auth = ({loginUser, isLogIn, user, logOutUser, registerNewUser}) =>{
 
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
-        isLogIn: state.auth.isLogIn,
-        user: state.auth.user,
-        isError: state.app.isError
+        isLogIn: isLogin(state),
+        user: meInfo(state),
+        
     }
   }
   
   
-  export default connect(mapStateToProps,{loginUser,registerNewUser,  logOutUser})(Auth)
+  export default connect(mapStateToProps,{  delRootUser, logOutUser})(Auth)
