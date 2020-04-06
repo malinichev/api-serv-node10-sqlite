@@ -17,7 +17,7 @@ const Strategy = passportJWT.Strategy;
 const db = require('./models/db');
 const config = require('./config/config');
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 5555
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-// app.use(express.static('./react-app/myapp/build'));
+app.use(express.static('./react-app/build'));
 
 
 const params = {
