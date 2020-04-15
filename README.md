@@ -18,13 +18,7 @@ npm run-script build </br>
 
 cd .. </br>
 
-npm install cors express jwt-simple method-override passport passport-jwt uuid </br>
-
-npm install bcryptjs --build-from-source </br>
-
-npm install bcrypt --build-from-source </br>
-
-npm install sqlite3 --build-from-source </br>
+npm i </br>
 
 pm2 start app.js --watch </br>
 
